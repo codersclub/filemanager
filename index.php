@@ -4,7 +4,7 @@ session_start();
 // to restrict Access, simply check for some previously defined Sessions and exit if not set.
 // if (!isset($_SESSION['login_to_filemanager_is_ok'])){ exit('<h1>no access</h1>'); }
 
-// start-directory for the File-Manager
+// start-directory for the File-Manager (no trailing slash)
 $basepath = '../cmskit/projects/kfk/files';
 
 // list of File-Names/File-Extensions not shown
@@ -12,7 +12,7 @@ $hiddenFiles = array('.cache', '.htaccess');
 $badExtensions = array('php', 'exe');
 
 // Language-Labels
-$labels = array(
+$labels = array (
 	'level_up' => 'übergeordnetes Verzeichnis',
 	'dir_not_writable' => 'Verzeichnis ist schreibgeschützt',
 	'file_not_writable' => 'Datei konnte nicht angelegt werden',
