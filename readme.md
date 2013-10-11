@@ -8,9 +8,10 @@ This is a simple File-Manager giving access to a Start-Folder
 
 ### Implementation
 
+* copy config.sample.php file to config.php
 * define a Session in your main App to restrict access
 * check for this Session at the top of the Script
-* define the Start-path at the top of the Script
+* define the Start-path in the config.php file
 * if you want transfer Filepaths (e.g. to a parent Application like a Text Editor) adapt the JS-Funtion at the very bottom of the Script
 * to restrict Access to some Files or Mimetypes simply adapt the Arrays $hiddenFiles and $badExtensions at the top of the Script
 * to adapt Language-Labels simply edit/replace $labels (see label_storage.txt)
