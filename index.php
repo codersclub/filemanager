@@ -5,6 +5,7 @@ session_start();
 // if (!isset($_SESSION['login_to_filemanager_is_ok'])){ exit('<h1>no access</h1>'); }
 
 require_once('./config.php');
+require_once('./lang/' . $lang . '.php');
 
 //////////////////////////////////////////////// DO NOT TOUCH ///////////////////////////////////////////////////
 $errors = array();
