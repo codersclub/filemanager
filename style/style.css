@@ -64,6 +64,7 @@ input {
 
 .error {
 	color: red;
+	text-align: center;
 }
 .button {
 	cursor: pointer;

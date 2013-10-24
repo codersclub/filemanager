@@ -128,9 +128,9 @@ if (isset($_GET['action']))
 	if ($_GET['action']=='dl' && isset($_GET['filepath']))
 	{
 		$fullpath = $basepath . '/'. $actpath . '/' . $_GET['filepath'];
-		if(!unlink($fullpath))
+		if(!@unlink($fullpath))
 		{
-			$errors[] = $labels['file_not_deletable'];
+			$errors[] = $labels['file_not_deletable'] . htmlspecialchars($_GET['filepath']);
 		}
 	}
 }
