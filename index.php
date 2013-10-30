@@ -20,7 +20,7 @@ function showList($path)
         $up = trim(dirname($path), '/.');
 
         if (strlen($path) > 0) {
-            echo '<tr><td colspan="5"><img src="style/go-up.png" class="ico" /> <a href="' . $_SERVER['PHP_SELF'] . '?path=' . $up . '">' . $labels['level_up'] . "</a></td></tr>\n";
+            echo '<tr><td colspan="5"><img src="style/go-up.png" class="ico"> <a href="' . $_SERVER['PHP_SELF'] . '?path=' . $up . '">' . $labels['level_up'] . "</a></td></tr>\n";
         }
 
         while (false !== ($file = readdir($handle))) {
@@ -41,13 +41,13 @@ function showList($path)
                             // show Filesize
                             . '<td align="right">' . size($filepath) . '</td>'
                             // create a Button to delete the File
-                            . '<td align="right"><img title="' . $labels['delete_file'] . '" class="ico button" onclick="del(\'' . $file . '\')" src="style/delete.png" alt="delete" /></td>'
+                            . '<td align="right"><img title="' . $labels['delete_file'] . '" class="ico button" onclick="del(\'' . $file . '\')" src="style/delete.png" alt="delete"></td>'
                             // create a Button to transfer Filepaths (e.g. to a parent Window)
-                            . '<td align="right"><img title="' . $labels['get_filepath'] . '" class="ico button" onclick="get(\'' . $relpath . '\')" src="style/ok.png" alt="get" /></td>'
+                            . '<td align="right"><img title="' . $labels['get_filepath'] . '" class="ico button" onclick="get(\'' . $relpath . '\')" src="style/ok.png" alt="get"></td>'
                             . "</tr>\n";
                     }
                 } elseif (is_dir($filepath)) {
-                    echo '<tr><td colspan="5"><img class="ico" src="style/folder.png" alt="dir" /> <a href="' . $_SERVER['PHP_SELF'] . '?path=' . $relpath . '">' . $file . "</a></td></tr>\n";
+                    echo '<tr><td colspan="5"><img class="ico" src="style/folder.png" alt="dir"> <a href="' . $_SERVER['PHP_SELF'] . '?path=' . $relpath . '">' . $file . "</a></td></tr>\n";
                 }
             }
         }
@@ -121,8 +121,8 @@ if (isset($_GET['action'])) {
 <html>
 <head>
     <title>File Browser</title>
-    <meta charset="utf-8"/>
-    <link href="style/style.css" rel="stylesheet" type="text/css"/>
+    <meta charset="utf-8">
+    <link href="style/style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <div id="main">
@@ -139,13 +139,13 @@ if (isset($_GET['action'])) {
         </table>
     </div>
     <form method="post" action="<?php echo $_SERVER['PHP_SELF'] . '?action=cd&path=' . $actpath; ?>">
-        <input type="text" name="newdir" placeholder="<?php echo $labels['directory_name'] ?>"/>
-        <input type="submit" value="<?php echo $labels['create_new_directory'] ?>"/>
+        <input type="text" name="newdir" placeholder="<?php echo $labels['directory_name'] ?>">
+        <input type="submit" value="<?php echo $labels['create_new_directory'] ?>">
     </form>
     <form method="post" action="<?php echo $_SERVER['PHP_SELF'] . '?action=uf&path=' . $actpath; ?>"
           enctype="multipart/form-data">
-        <input type="file" name="file"/>
-        <input type="submit" value="<?php echo $labels['upload_file'] ?>"/>
+        <input type="file" name="file">
+        <input type="submit" value="<?php echo $labels['upload_file'] ?>">
     </form>
 </div>
 <script>
