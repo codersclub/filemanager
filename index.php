@@ -138,22 +138,22 @@ if (isset($_GET['action'])) {
             ?>
         </table>
     </div>
-    <form method="post" action="<?php echo $_SERVER['PHP_SELF'] . '?action=cd&path=' . $actpath; ?>">
-        <input type="text" name="newdir" placeholder="<?php echo $labels['directory_name'] ?>">
-        <input type="submit" value="<?php echo $labels['create_new_directory'] ?>">
+    <form method="post" action="<?= $_SERVER['PHP_SELF'] . '?action=cd&path=' . $actpath; ?>">
+        <input type="text" name="newdir" placeholder="<?= $labels['directory_name'] ?>">
+        <input type="submit" value="<?= $labels['create_new_directory'] ?>">
     </form>
-    <form method="post" action="<?php echo $_SERVER['PHP_SELF'] . '?action=uf&path=' . $actpath; ?>"
+    <form method="post" action="<?= $_SERVER['PHP_SELF'] . '?action=uf&path=' . $actpath; ?>"
           enctype="multipart/form-data">
         <input type="file" name="file">
-        <input type="submit" value="<?php echo $labels['upload_file'] ?>">
+        <input type="submit" value="<?= $labels['upload_file'] ?>">
     </form>
 </div>
 <script>
     // ask the User & delete the File
     function del(path) {
-        var q = confirm('<?php echo $labels['really_delete']?>?');
+        var q = confirm('<?= $labels['really_delete'] ?>');
         if (q) {
-            window.location = '<?php echo $_SERVER['PHP_SELF'] . '?action=dl&path=' . $actpath; ?>&filepath=' + path;
+            window.location = '<?= $_SERVER['PHP_SELF'] . '?action=dl&path=' . $actpath; ?>&filepath=' + path;
         }
     }
     // get the File-Path (do something useful like transfer the File-Link to a Text-Editor)
