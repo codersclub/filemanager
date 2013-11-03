@@ -9,12 +9,17 @@ require_once('./lang/' . $lang . '.php');
 
 //////////////////////////////////////////////// DO NOT TOUCH ///////////////////////////////////////////////////
 $errors = array();
+
 function showList($path)
 {
     global $basepath, $labels, $hiddenFiles, $badExtensions;
 
     $fullpath = $basepath . '/' . $path;
+    $fulldir = str_replace('\\', '/', realpath($basepath)) . '/' . $path;
 
+//echo 'path=', $path, "<br>";
+//echo 'fullpath=', $fullpath, "<br>";
+//echo 'fulldir=', $fulldir, "<br>";
 
     if ($handle = opendir($fullpath)) {
         $up = trim(dirname($path), '/.');
@@ -28,7 +33,7 @@ function showList($path)
             if ($file != "." && $file != ".." && !in_array(basename($file), $hiddenFiles)) {
 
                 $filepath = trim($fullpath . '/' . $file, '/');
-                $relpath = trim($path . '/' . $file, '/.');
+                $relpath = trim($path . '/' . $file, '/');
 
                 if (is_file($filepath)) {
                     $i = pathinfo($filepath);
@@ -75,6 +80,8 @@ function size($path)
 
 
 $actpath = isset($_GET['path']) ? str_replace('..', '', $_GET['path']) : '';
+
+//echo 'actpath=', $actpath, "<br>";
 
 if (isset($_GET['action'])) {
     // create Directory
