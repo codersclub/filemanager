@@ -68,6 +68,8 @@ input {
 }
 .button {
 	cursor: pointer;
+	width: 16px;
+	height: 16px;
 }
 
 .ico {

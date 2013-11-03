@@ -41,9 +41,9 @@ function showList($path)
                             // show Filesize
                             . '<td align="right">' . size($filepath) . '</td>'
                             // create a Button to delete the File
-                            . '<td align="right"><img title="' . $labels['delete_file'] . '" class="ico button" onclick="del(\'' . $file . '\')" src="style/delete.png" alt="delete"></td>'
+                            . '<td align="right"><img title="' . $labels['delete_file'] . '" class="button" onclick="del(\'' . $file . '\')" src="style/delete.png" alt="delete"></td>'
                             // create a Button to transfer Filepaths (e.g. to a parent Window)
-                            . '<td align="right"><img title="' . $labels['get_filepath'] . '" class="ico button" onclick="get(\'' . $relpath . '\')" src="style/ok.png" alt="get"></td>'
+                            . '<td align="right"><img title="' . $labels['get_filepath'] . '" class="button" onclick="get(\'' . $relpath . '\')" src="style/ok.png" alt="get"></td>'
                             . "</tr>\n";
                     }
                 } elseif (is_dir($filepath)) {
