@@ -11,6 +11,6 @@ $labels = array (
 	'delete_file' => 'Datei löschen',
 	'file_not_deletable' => 'Datei nicht löschbar: ',
 	'get_filepath' => 'Dateipfad übernehmen',
-	'really_delete' => 'wirklich löschen',
+	'really_delete' => 'wirklich löschen?',
 	'file_type_not_allowed' => 'Dateityp ist nicht erlaubt',
 );

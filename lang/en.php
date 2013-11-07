@@ -11,6 +11,6 @@ $labels = array (
 	'delete_file' => 'Delete the file',
 	'file_not_deletable' => 'Can not delete the file: ',
 	'get_filepath' => 'Get the file path',
-	'really_delete' => 'Really delete',
+	'really_delete' => 'Really delete?',
 	'file_type_not_allowed' => 'This Mime-Type is not allowed',
 );
