@@ -17,15 +17,21 @@ function showList($path)
     $fullpath = $basepath . '/' . $path;
     $fulldir = str_replace('\\', '/', realpath($basepath)) . '/' . $path;
 
-//echo 'path=', $path, "<br>";
-//echo 'fullpath=', $fullpath, "<br>";
-//echo 'fulldir=', $fulldir, "<br>";
+    $dirs = array();
+    $files = array();
 
     if ($handle = opendir($fullpath)) {
-        $up = trim(dirname($path), '/.');
+        $up = trim(dirname($path), '/');
+        if ($up == '.') { $up = ''; }
 
         if (strlen($path) > 0) {
-            echo '<tr><td colspan="5"><img src="style/go-up.png" class="ico"> <a href="' . $_SERVER['PHP_SELF'] . '?path=' . $up . '">' . $labels['level_up'] . "</a></td></tr>\n";
+            $dirs[] = array(
+                'icon' => 'style/go-up.png',
+                'url' => $_SERVER['PHP_SELF'] . '?path=' . $up,
+                'relpath' => $relpath,
+                'file' => $labels['level_up'],
+                'is_file' => 0,
+            );
         }
 
         while (false !== ($file = readdir($handle))) {
@@ -38,26 +44,53 @@ function showList($path)
                 if (is_file($filepath)) {
                     $i = pathinfo($filepath);
                     if (!in_array($i['extension'], $badExtensions)) {
-                        echo '<tr>'
-                            // Mime-Icon and Filename with Link
-                            . '<td><span class="ico ' . $i['extension'] . '"></span> <a target="_blank" href="' . $filepath . '">' . $file . '</a></td>'
-                            // show creation-Date
-                            . '<td align="right">' . date("d-m-Y H:i:s", filemtime($filepath)) . '</td>'
-                            // show Filesize
-                            . '<td align="right">' . size($filepath) . '</td>'
-                            // create a Button to delete the File
-                            . '<td align="right"><img title="' . $labels['delete_file'] . '" class="button" onclick="del(\'' . $file . '\')" src="style/delete.png" alt="delete"></td>'
-                            // create a Button to transfer Filepaths (e.g. to a parent Window)
-                            . '<td align="right"><img title="' . $labels['get_filepath'] . '" class="button" onclick="get(\'' . $relpath . '\')" src="style/ok.png" alt="get"></td>'
-                            . "</tr>\n";
+                        $files[] = array(
+                            'icon' => $i['extension'],
+                            'url' => $filepath,
+                            'relpath' => $relpath,
+                            'file' => $file,
+                            'date' => date("d-m-Y H:i:s", filemtime($filepath)),
+                            'size' => size($filepath),
+                            'is_file' => 1,
+                        );
                     }
                 } elseif (is_dir($filepath)) {
-                    echo '<tr><td colspan="5"><img class="ico" src="style/folder.png" alt="dir"> <a href="' . $_SERVER['PHP_SELF'] . '?path=' . $relpath . '">' . $file . "</a></td></tr>\n";
+                    $dirs[] = array(
+                        'icon' => 'style/folder.png',
+                        'url' => $_SERVER['PHP_SELF'] . '?path=' . $relpath,
+                        'file' => $file,
+                        'is_file' => 0,
+                    );
                 }
             }
         }
 
         closedir($handle);
+
+        $files = array_merge($dirs, $files);
+
+        foreach($files as $row) {
+                if ($row['is_file']) {
+                    $i = pathinfo($filepath);
+                    if (!in_array($i['extension'], $badExtensions)) {
+                        echo '<tr>'
+                            // Mime-Icon and Filename with Link
+                            . '<td><span class="ico ' . $row['icon'] . '"></span> <a target="_blank" href="' . $row['url'] . '">' . $row['file'] . '</a></td>'
+                            // show creation-Date
+                            . '<td align="right">' . $row['date'] . '</td>'
+                            // show Filesize
+                            . '<td align="right">' . $row['size'] . '</td>'
+                            // create a Button to delete the File
+                            . '<td align="right"><img title="' . $labels['delete_file'] . '" class="button" onclick="del(\'' . $row['file'] . '\')" src="style/delete.png" alt="delete"></td>'
+                            // create a Button to transfer Filepaths (e.g. to a parent Window)
+                            . '<td align="right"><img title="' . $labels['get_filepath'] . '" class="button" onclick="get(\'' . $row['relpath'] . '\')" src="style/ok.png" alt="get"></td>'
+                            . "</tr>\n";
+                    }
+                } else {
+                    echo '<tr><td colspan="5"><img class="ico" src="' . $row['icon'] . '" alt="dir"> <a href="' . $row['url'] . '">' . $row['file'] . "</a></td></tr>\n";
+                }
+        }
+
     }
 
 }
@@ -80,8 +113,6 @@ function size($path)
 
 
 $actpath = isset($_GET['path']) ? str_replace('..', '', $_GET['path']) : '';
-
-//echo 'actpath=', $actpath, "<br>";
 
 if (isset($_GET['action'])) {
     // create Directory
