@@ -1,7 +1,7 @@
 <?php
 // English Lamguage File for FileManager
 
-$labels = array (
+$labels = [
 	'level_up' => 'Level up',
 	'dir_not_writable' => 'Directory is not writable',
 	'file_not_writable' => 'Could not create the file',
@@ -13,4 +13,4 @@ $labels = array (
 	'get_filepath' => 'Get the file path',
 	'really_delete' => 'Really delete?',
 	'file_type_not_allowed' => 'This Mime-Type is not allowed',
-);
+];

@@ -4,11 +4,13 @@ session_start();
 // to restrict Access, simply check for some previously defined Sessions and exit if not set.
 // if (!isset($_SESSION['login_to_filemanager_is_ok'])){ exit('<h1>no access</h1>'); }
 
+// Load configuration
 require_once('./config.php');
+
+// Load language variables
 require_once('./lang/' . $lang . '.php');
 
-//////////////////////////////////////////////// DO NOT TOUCH ///////////////////////////////////////////////////
-$errors = array();
+$errors = [];
 
 function showList($path)
 {
@@ -17,26 +19,26 @@ function showList($path)
     $fullpath = $basepath . '/' . $path;
     $fulldir = str_replace('\\', '/', realpath($basepath)) . '/' . $path;
 
-    $dirs = array();
-    $files = array();
+    $dirs = [];
+    $files = [];
 
     if ($handle = opendir($fullpath)) {
         $up = trim(dirname($path), '/');
         if ($up == '.') { $up = ''; }
 
         if (strlen($path) > 0) {
-            $dirs[] = array(
+            $dirs[] = [
                 'icon' => 'style/go-up.png',
                 'url' => $_SERVER['PHP_SELF'] . '?path=' . $up,
                 'relpath' => $relpath,
                 'file' => $labels['level_up'],
                 'is_file' => 0,
-            );
+            ];
         }
 
         while (false !== ($file = readdir($handle))) {
 
-            if ($file != "." && $file != ".." && !in_array(basename($file), $hiddenFiles)) {
+            if ($file != '.' && $file != '..' && !in_array(basename($file), $hiddenFiles)) {
 
                 $filepath = trim($fullpath . '/' . $file, '/');
                 $relpath = trim($path . '/' . $file, '/');
@@ -44,7 +46,7 @@ function showList($path)
                 if (is_file($filepath)) {
                     $i = pathinfo($filepath);
                     if (!in_array($i['extension'], $badExtensions)) {
-                        $files[] = array(
+                        $files[] = [
                             'icon' => $i['extension'],
                             'url' => $filepath,
                             'relpath' => $relpath,
@@ -52,15 +54,15 @@ function showList($path)
                             'date' => date("d-m-Y H:i:s", filemtime($filepath)),
                             'size' => size($filepath),
                             'is_file' => 1,
-                        );
+                        ];
                     }
                 } elseif (is_dir($filepath)) {
-                    $dirs[] = array(
+                    $dirs[] = [
                         'icon' => 'style/folder.png',
                         'url' => $_SERVER['PHP_SELF'] . '?path=' . $relpath,
                         'file' => $file,
                         'is_file' => 0,
-                    );
+                    ];
                 }
             }
         }
