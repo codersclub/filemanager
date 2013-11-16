@@ -72,25 +72,25 @@ function showList($path)
         $files = array_merge($dirs, $files);
 
         foreach($files as $row) {
-                if ($row['is_file']) {
-                    $i = pathinfo($filepath);
-                    if (!in_array($i['extension'], $badExtensions)) {
-                        echo '<tr>'
-                            // Mime-Icon and Filename with Link
-                            . '<td><span class="ico ' . $row['icon'] . '"></span> <a target="_blank" href="' . $row['url'] . '">' . $row['file'] . '</a></td>'
-                            // show creation-Date
-                            . '<td align="right">' . $row['date'] . '</td>'
-                            // show Filesize
-                            . '<td align="right">' . $row['size'] . '</td>'
-                            // create a Button to delete the File
-                            . '<td align="right"><img title="' . $labels['delete_file'] . '" class="button" onclick="del(\'' . $row['file'] . '\')" src="style/delete.png" alt="delete"></td>'
-                            // create a Button to transfer Filepaths (e.g. to a parent Window)
-                            . '<td align="right"><img title="' . $labels['get_filepath'] . '" class="button" onclick="get(\'' . $row['relpath'] . '\')" src="style/ok.png" alt="get"></td>'
-                            . "</tr>\n";
-                    }
-                } else {
-                    echo '<tr><td colspan="5"><img class="ico" src="' . $row['icon'] . '" alt="dir"> <a href="' . $row['url'] . '">' . $row['file'] . "</a></td></tr>\n";
+            if ($row['is_file']) {
+                $i = pathinfo($filepath);
+                if (!in_array($i['extension'], $badExtensions)) {
+                    echo '<tr>'
+                        // Mime-Icon and Filename with Link
+                        . '<td><span class="ico ' . $row['icon'] . '"></span> <a target="_blank" href="' . $row['url'] . '">' . $row['file'] . '</a></td>'
+                        // show creation-Date
+                        . '<td align="right">' . $row['date'] . '</td>'
+                        // show Filesize
+                        . '<td align="right">' . $row['size'] . '</td>'
+                        // create a Button to delete the File
+                        . '<td align="right"><img title="' . $labels['delete_file'] . '" class="button" onclick="del(\'' . $row['file'] . '\')" src="style/delete.png" alt="delete"></td>'
+                        // create a Button to transfer Filepaths (e.g. to a parent Window)
+                        . '<td align="right"><img title="' . $labels['get_filepath'] . '" class="button" onclick="get(\'' . $row['relpath'] . '\')" src="style/ok.png" alt="get"></td>'
+                        . "</tr>\n";
                 }
+            } else {
+                echo '<tr><td colspan="5"><img class="ico" src="' . $row['icon'] . '" alt="dir"> <a href="' . $row['url'] . '">' . $row['file'] . "</a></td></tr>\n";
+            }
         }
 
     }
@@ -103,7 +103,7 @@ function size($path)
 
     if ($bytes > 0) {
         $unit = intval(log($bytes, 1024));
-        $units = array('B', 'KB', 'MB', 'GB', 'TB');
+        $units = ['B', 'KB', 'MB', 'GB', 'TB'];
 
         if (array_key_exists($unit, $units) === true) {
             return sprintf('%d %s', $bytes / pow(1024, $unit), $units[$unit]);
@@ -112,7 +112,6 @@ function size($path)
 
     return $bytes;
 }
-
 
 $actpath = isset($_GET['path']) ? str_replace('..', '', $_GET['path']) : '';
 
@@ -162,7 +161,7 @@ if (isset($_GET['action'])) {
 <head>
     <title>File Browser</title>
     <meta charset="utf-8">
-    <link href="style/style.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="style/style.css">
 </head>
 <body>
 <div id="main">
@@ -178,11 +177,11 @@ if (isset($_GET['action'])) {
             ?>
         </table>
     </div>
-    <form method="post" action="<?= $_SERVER['PHP_SELF'] . '?action=cd&path=' . $actpath; ?>">
+    <form method="post" action="<?= $_SERVER['PHP_SELF'] . '?action=cd&path=' . $actpath ?>">
         <input type="text" name="newdir" placeholder="<?= $labels['directory_name'] ?>">
         <input type="submit" value="<?= $labels['create_new_directory'] ?>">
     </form>
-    <form method="post" action="<?= $_SERVER['PHP_SELF'] . '?action=uf&path=' . $actpath; ?>"
+    <form method="post" action="<?= $_SERVER['PHP_SELF'] . '?action=uf&path=' . $actpath ?>"
           enctype="multipart/form-data">
         <input type="file" name="file">
         <input type="submit" value="<?= $labels['upload_file'] ?>">
@@ -193,7 +192,7 @@ if (isset($_GET['action'])) {
     function del(path) {
         var q = confirm('<?= $labels['really_delete'] ?>');
         if (q) {
-            window.location = '<?= $_SERVER['PHP_SELF'] . '?action=dl&path=' . $actpath; ?>&filepath=' + path;
+            window.location = '<?= $_SERVER['PHP_SELF'] . '?action=dl&path=' . $actpath ?>&filepath=' + path;
         }
     }
     // get the File-Path (do something useful like transfer the File-Link to a Text-Editor)
