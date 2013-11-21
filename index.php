@@ -28,7 +28,7 @@ function showList($path)
 
         if (strlen($path) > 0) {
             $dirs[] = [
-                'icon' => 'style/go-up.png',
+                'icon' => 'go-up',
                 'url' => $_SERVER['PHP_SELF'] . '?path=' . $up,
                 'relpath' => $relpath,
                 'file' => $labels['level_up'],
@@ -58,7 +58,7 @@ function showList($path)
                     }
                 } elseif (is_dir($filepath)) {
                     $dirs[] = [
-                        'icon' => 'style/folder.png',
+                        'icon' => 'folder',
                         'url' => $_SERVER['PHP_SELF'] . '?path=' . $relpath,
                         'file' => $file,
                         'is_file' => 0,
@@ -89,7 +89,7 @@ function showList($path)
                         . "</tr>\n";
                 }
             } else {
-                echo '<tr><td colspan="5"><img class="ico" src="' . $row['icon'] . '" alt="dir"> <a href="' . $row['url'] . '">' . $row['file'] . "</a></td></tr>\n";
+                echo '<tr><td colspan="5"><span class="ico ' . $row['icon'] . '"></span> <a href="' . $row['url'] . '">' . $row['file'] . "</a></td></tr>\n";
             }
         }
 
