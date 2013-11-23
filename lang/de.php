@@ -1,5 +1,5 @@
 <?php
-// German Lamguage File for FileManager
+// German Language File for FileManager
 
 $labels = [
 	'level_up' => 'übergeordnetes Verzeichnis',
@@ -13,4 +13,5 @@ $labels = [
 	'get_filepath' => 'Dateipfad übernehmen',
 	'really_delete' => 'wirklich löschen?',
 	'file_type_not_allowed' => 'Dateityp ist nicht erlaubt',
+	'actual_path' => 'Tatsächlicher Pfad',
 ];

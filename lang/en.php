@@ -1,5 +1,5 @@
 <?php
-// English Lamguage File for FileManager
+// English Language File for FileManager
 
 $labels = [
 	'level_up' => 'Level up',
@@ -13,4 +13,5 @@ $labels = [
 	'get_filepath' => 'Get the file path',
 	'really_delete' => 'Really delete?',
 	'file_type_not_allowed' => 'This Mime-Type is not allowed',
+	'actual_path' => 'Actual path',
 ];

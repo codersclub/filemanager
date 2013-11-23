@@ -170,6 +170,7 @@ if (isset($_GET['action'])) {
         echo '<p class="error">' . $error . '</p>';
     }
     ?>
+    <div class="caption"><?= $labels['actual_path'] ?>: <?= $actpath ?></div>
     <div id="result">
         <table width="100%">
             <?php
