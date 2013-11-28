@@ -77,7 +77,7 @@ function showList($path)
                 if (!in_array($i['extension'], $badExtensions)) {
                     echo '<tr>'
                         // Mime-Icon and Filename with Link
-                        . '<td><span class="ico ' . $row['icon'] . '"></span> <a target="_blank" href="' . $row['url'] . '">' . $row['file'] . '</a></td>'
+                        . '<td><i class="ico ' . $row['icon'] . '"></i> <a target="_blank" href="' . $row['url'] . '">' . $row['file'] . '</a></td>'
                         // show creation-Date
                         . '<td align="right">' . $row['date'] . '</td>'
                         // show Filesize
@@ -89,7 +89,7 @@ function showList($path)
                         . "</tr>\n";
                 }
             } else {
-                echo '<tr><td colspan="5"><span class="ico ' . $row['icon'] . '"></span> <a href="' . $row['url'] . '">' . $row['file'] . "</a></td></tr>\n";
+                echo '<tr><td colspan="5"><i class="ico ' . $row['icon'] . '"></i> <a href="' . $row['url'] . '">' . $row['file'] . "</a></td></tr>\n";
             }
         }
 
