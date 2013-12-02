@@ -75,17 +75,17 @@ function showList($path)
             if ($row['is_file']) {
                 $i = pathinfo($filepath);
                 if (!in_array($i['extension'], $badExtensions)) {
-                    echo '<tr>'
+                    echo '<tr align="right">'
                         // Mime-Icon and Filename with Link
-                        . '<td><i class="ico ' . $row['icon'] . '"></i> <a target="_blank" href="' . $row['url'] . '">' . $row['file'] . '</a></td>'
+                        . '<td align="left"><i class="ico ' . $row['icon'] . '"></i> <a target="_blank" href="' . $row['url'] . '">' . $row['file'] . '</a></td>'
                         // show creation-Date
-                        . '<td align="right">' . $row['date'] . '</td>'
+                        . '<td>' . $row['date'] . '</td>'
                         // show Filesize
-                        . '<td align="right">' . $row['size'] . '</td>'
+                        . '<td>' . $row['size'] . '</td>'
                         // create a Button to delete the File
-                        . '<td align="right"><img title="' . $labels['delete_file'] . '" class="button" onclick="del(\'' . $row['file'] . '\')" src="style/delete.png" alt="delete"></td>'
+                        . '<td><i class="ico delete" title="' . $labels['delete_file'] . '" onclick="del(\'' . $row['file'] . '\')"></td>'
                         // create a Button to transfer Filepaths (e.g. to a parent Window)
-                        . '<td align="right"><img title="' . $labels['get_filepath'] . '" class="button" onclick="get(\'' . $row['relpath'] . '\')" src="style/ok.png" alt="get"></td>'
+                        . '<td><i class="ico ok" title="' . $labels['get_filepath'] . '" onclick="get(\'' . $row['relpath'] . '\')"></td>'
                         . "</tr>\n";
                 }
             } else {
