@@ -14,4 +14,5 @@ $labels = [
 	'really_delete' => 'Really delete?',
 	'file_type_not_allowed' => 'This Mime-Type is not allowed',
 	'actual_path' => 'Actual path',
+	'dir_not_found' => 'Directory not found',
 ];

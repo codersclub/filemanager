@@ -14,4 +14,5 @@ $labels = [
 	'really_delete' => 'wirklich löschen?',
 	'file_type_not_allowed' => 'Dateityp ist nicht erlaubt',
 	'actual_path' => 'Tatsächlicher Pfad',
+	'dir_not_found' => 'Verzeichnis nicht gefunden',
 ];
