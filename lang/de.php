@@ -15,4 +15,8 @@ $labels = [
 	'file_type_not_allowed' => 'Dateityp ist nicht erlaubt',
 	'actual_path' => 'Tatsächlicher Pfad',
 	'dir_not_found' => 'Verzeichnis nicht gefunden',
+        'file_name' => 'Name',
+        'file_date' => 'Datei',
+        'file_size' => 'Size',
+        'action' => 'Action',
 ];

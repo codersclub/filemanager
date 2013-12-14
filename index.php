@@ -89,7 +89,12 @@ function showList($path)
                         . "</tr>\n";
                 }
             } else {
-                echo '<tr><td colspan="5"><i class="ico ' . $row['icon'] . '"></i> <a href="' . $row['url'] . '">' . $row['file'] . "</a></td></tr>\n";
+                echo '<tr><td><i class="ico ' . $row['icon'] . '"></i> <a href="' . $row['url'] . '">' . $row['file'] . '</a></td>'
+                   . '<td>&nbsp;</td>'
+                   . '<td>&nbsp;</td>'
+                   . '<td>&nbsp;</td>'
+                   . '<td>&nbsp;</td>'
+                   . "</tr>\n";
             }
         }
 
@@ -173,6 +178,13 @@ if (isset($_GET['action'])) {
     <div class="caption"><?= $labels['actual_path'] ?>: <?= $actpath ?></div>
     <div id="result">
         <table width="100%">
+            <tr align="center">
+                <th><?= $labels['file_name'] ?></th>
+                <th><?= $labels['file_date'] ?></th>
+                <th><?= $labels['file_size'] ?></th>
+                <th colspan="2"><?= $labels['action'] ?></th>
+            </tr>
+
             <?php
             showList($actpath);
             ?>

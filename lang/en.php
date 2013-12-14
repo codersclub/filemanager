@@ -15,4 +15,8 @@ $labels = [
 	'file_type_not_allowed' => 'This Mime-Type is not allowed',
 	'actual_path' => 'Actual path',
 	'dir_not_found' => 'Directory not found',
+        'file_name' => 'Name',
+        'file_date' => 'Date',
+        'file_size' => 'Size',
+        'action' => 'Action',
 ];

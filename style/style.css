@@ -20,6 +20,10 @@ th, td {
 	padding: 0 4px;
 	border: 1px solid #ccc;
 }
+th {
+	color: #ccc;
+	font-weight: normal;
+}
 form {
 	margin: 20px;
 	border: 1px solid #cccccc;
