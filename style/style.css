@@ -1,13 +1,32 @@
+* {
+	box-sizing: border-box;
+}
 #main {
 	margin: auto;
-/*	border: 1px solid #ccc;*/
 	width: 640px;
 	font-family: Arial, Helvetica, sans-serif;
 	font-size : 12px;
 }
+ul.menu {
+	width: 100%;
+	margin: 0 0 1em;
+	padding: 0;
+	text-align: center;
+	display: table;
+	border: 1px solid #ccc;
+}
+.menu li {
+	display: table-cell;
+	padding: 4px;
+	border-right: 1px solid #ccc;
+}
+.menu li:last-child {
+	border: 0;
+}
 .caption {
-	padding: 0 10px;
+	padding: 0;
 	font-size : 14px;
+	margin: 0 0 1em;
 }
 table {
 	margin: 0;

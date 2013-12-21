@@ -170,6 +170,13 @@ if (isset($_GET['action'])) {
 </head>
 <body>
 <div id="main">
+    <ul class="menu">
+        <li><a href="<?= $_SERVER['PHP_SELF'] ?>"><?= $labels['home_page'] ?></a></li>
+        <li><a href="javascript:;"><?= $labels['create_dir_page'] ?></a></li>
+        <li><a href="javascript:;"><?= $labels['upload_page'] ?></a></li>
+        <li><a href="javascript:;"><?= $labels['other_page'] ?></a></li>
+    </ul>
+
     <?php
     foreach ($errors as $error) {
         echo '<p class="error">' . $error . '</p>';

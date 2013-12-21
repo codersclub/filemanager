@@ -19,4 +19,8 @@ $labels = [
         'file_date' => 'Datei',
         'file_size' => 'Size',
         'action' => 'Action',
+        'home_page' => 'Home',
+        'create_dir_page' => 'Create Directory',
+        'upload_page' => 'Upload',
+        'other_page' => 'Some others...',
 ];
