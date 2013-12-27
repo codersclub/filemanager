@@ -118,6 +118,26 @@ function size($path)
     return $bytes;
 }
 
+function breadCrumbs($path='')
+{
+    global $labels;
+
+    $crumbs = explode('/', $path);
+    if(!empty($crumbs[0])) {
+        array_unshift($crumbs, '');
+    }
+
+    echo $labels['actual_path'], ': ';
+
+    $url = '';
+    foreach($crumbs as $dir) {
+        $name = empty($dir) ? $labels['root_dir'] : $dir;
+        $url = empty($dir) ? '' : $url . (!empty($url) ? '/' : '') . $dir;
+        $prefix = empty($dir) ? '' : '&raquo;';
+        echo $prefix . '<a href="' . $url_SERVER['PHP_SELF'] . '?action=cd&path=' . $url . '">' . $name . '</a> ';
+    }
+}
+
 $actpath = isset($_GET['path']) ? str_replace('..', '', $_GET['path']) : '';
 
 if (isset($_GET['action'])) {
@@ -182,7 +202,8 @@ if (isset($_GET['action'])) {
         echo '<p class="error">' . $error . '</p>';
     }
     ?>
-    <div class="caption"><?= $labels['actual_path'] ?>: <?= $actpath ?></div>
+    <div class="caption"><? breadCrumbs($actpath) ?></div>
+
     <div id="result">
         <table width="100%">
             <tr align="center">
@@ -198,7 +219,7 @@ if (isset($_GET['action'])) {
         </table>
     </div>
     <form method="post" action="<?= $_SERVER['PHP_SELF'] . '?action=cd&path=' . $actpath ?>">
-        <input type="text" name="newdir" placeholder="<?= $labels['directory_name'] ?>">
+        <input type="text" name="newdir" placeholder="<?= $labels['dir_name'] ?>">
         <input type="submit" value="<?= $labels['create_new_directory'] ?>">
     </form>
     <form method="post" action="<?= $_SERVER['PHP_SELF'] . '?action=uf&path=' . $actpath ?>"

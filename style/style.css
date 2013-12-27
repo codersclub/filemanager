@@ -27,6 +27,7 @@ ul.menu {
 	padding: 0;
 	font-size : 14px;
 	margin: 0 0 1em;
+	color: gray;
 }
 table {
 	margin: 0;
@@ -62,7 +63,7 @@ form {
 a {
 	color: #000;
 	text-decoration: none;
-	padding: 4px 15px;
+	padding: 4px;
 	min-width: 320px;
 }
 a:hover {

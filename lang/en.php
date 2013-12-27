@@ -6,7 +6,7 @@ $labels = [
 	'dir_not_writable' => 'Directory is not writable',
 	'file_not_writable' => 'Could not create the file',
 	'create_new_directory' => 'Create a new directory',
-	'directory_name' => 'Name',
+	'dir_name' => 'Name',
 	'upload_file' => 'Upload a new file',
 	'delete_file' => 'Delete the file',
 	'file_not_deletable' => 'Can not delete the file: ',
@@ -23,4 +23,5 @@ $labels = [
         'create_dir_page' => 'Create Directory',
         'upload_page' => 'Upload',
         'other_page' => 'Some others...',
+        'root_dir' => 'Root',
 ];

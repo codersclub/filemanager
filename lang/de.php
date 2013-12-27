@@ -6,7 +6,7 @@ $labels = [
 	'dir_not_writable' => 'Verzeichnis ist schreibgeschützt',
 	'file_not_writable' => 'Datei konnte nicht angelegt werden',
 	'create_new_directory' => 'neues Verzeichnis anlegen',
-	'directory_name' => 'Verzeichnisname',
+	'dir_name' => 'Verzeichnisname',
 	'upload_file' => 'Datei hochladen',
 	'delete_file' => 'Datei löschen',
 	'file_not_deletable' => 'Datei nicht löschbar: ',
@@ -23,4 +23,5 @@ $labels = [
         'create_dir_page' => 'Create Directory',
         'upload_page' => 'Upload',
         'other_page' => 'Some others...',
+        'root_dir' => 'Root',
 ];
