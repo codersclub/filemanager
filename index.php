@@ -187,12 +187,14 @@ if (isset($_GET['action'])) {
     <title>File Browser</title>
     <meta charset="utf-8">
     <link rel="stylesheet" href="style/style.css">
+    <!-- Modal Styles -->
+    <link rel="stylesheet" href="style/modal.css">
 </head>
 <body>
 <div id="main">
     <ul class="menu">
         <li><a href="<?= $_SERVER['PHP_SELF'] ?>"><?= $labels['home_page'] ?></a></li>
-        <li><a href="javascript:;"><?= $labels['create_dir_page'] ?></a></li>
+        <li><a href="#modal"><?= $labels['create_dir_page'] ?></a></li>
         <li><a href="javascript:;"><?= $labels['upload_page'] ?></a></li>
         <li><a href="javascript:;"><?= $labels['other_page'] ?></a></li>
     </ul>
@@ -218,16 +220,21 @@ if (isset($_GET['action'])) {
             ?>
         </table>
     </div>
-    <form method="post" action="<?= $_SERVER['PHP_SELF'] . '?action=cd&path=' . $actpath ?>">
-        <input type="text" name="newdir" placeholder="<?= $labels['dir_name'] ?>">
-        <input type="submit" value="<?= $labels['create_new_directory'] ?>">
-    </form>
     <form method="post" action="<?= $_SERVER['PHP_SELF'] . '?action=uf&path=' . $actpath ?>"
           enctype="multipart/form-data">
         <input type="file" name="file">
         <input type="submit" value="<?= $labels['upload_file'] ?>">
     </form>
 </div>
+
+<div class="modal" id="modal">
+    <form class="modal-content" method="post" action="<?= $_SERVER['PHP_SELF'] . '?action=cd&path=' . $actpath ?>">
+        <a href="#" class="close">×</a>
+        <h2><?= $labels['create_new_directory'] ?></h2>
+        <input type="text" name="newdir" placeholder="<?= $labels['dir_name'] ?>" required="required">
+        <button type="submit"><?= $labels['create_new_directory'] ?></button>
+    </form>
+	</div>
 <script>
     // ask the User & delete the File
     function del(path) {
