@@ -194,8 +194,8 @@ if (isset($_GET['action'])) {
 <div id="main">
     <ul class="menu">
         <li><a href="<?= $_SERVER['PHP_SELF'] ?>"><?= $labels['home_page'] ?></a></li>
-        <li><a href="#modal"><?= $labels['create_dir_page'] ?></a></li>
-        <li><a href="javascript:;"><?= $labels['upload_page'] ?></a></li>
+        <li><a href="#create_dir"><?= $labels['create_dir_page'] ?></a></li>
+        <li><a href="#upload"><?= $labels['upload_page'] ?></a></li>
         <li><a href="javascript:;"><?= $labels['other_page'] ?></a></li>
     </ul>
 
@@ -220,21 +220,28 @@ if (isset($_GET['action'])) {
             ?>
         </table>
     </div>
-    <form method="post" action="<?= $_SERVER['PHP_SELF'] . '?action=uf&path=' . $actpath ?>"
-          enctype="multipart/form-data">
-        <input type="file" name="file">
-        <input type="submit" value="<?= $labels['upload_file'] ?>">
-    </form>
 </div>
 
-<div class="modal" id="modal">
+<div class="modal" id="create_dir">
     <form class="modal-content" method="post" action="<?= $_SERVER['PHP_SELF'] . '?action=cd&path=' . $actpath ?>">
         <a href="#" class="close">×</a>
         <h2><?= $labels['create_new_directory'] ?></h2>
         <input type="text" name="newdir" placeholder="<?= $labels['dir_name'] ?>" required="required">
         <button type="submit"><?= $labels['create_new_directory'] ?></button>
     </form>
-	</div>
+</div>
+
+<div class="modal" id="upload">
+    <form class="modal-content" method="post"
+          action="<?= $_SERVER['PHP_SELF'] . '?action=uf&path=' . $actpath ?>"
+          enctype="multipart/form-data">
+        <a href="#" class="close">×</a>
+        <h2><?= $labels['upload_file'] ?></h2>
+        <input type="file" name="file" required="required">
+        <button type="submit"><?= $labels['upload'] ?></button>
+    </form>
+</div>
+
 <script>
     // ask the User & delete the File
     function del(path) {

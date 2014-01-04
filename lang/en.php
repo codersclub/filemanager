@@ -24,4 +24,5 @@ $labels = [
         'upload_page' => 'Upload',
         'other_page' => 'Some others...',
         'root_dir' => 'Root',
+	'upload' => 'Upload',
 ];
