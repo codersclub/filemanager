@@ -23,7 +23,7 @@ ul.menu {
 .menu li:last-child {
 	border: 0;
 }
-.caption {
+.breadcrumbs {
 	padding: 0;
 	font-size : 14px;
 	margin: 0 0 1em;

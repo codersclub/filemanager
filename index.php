@@ -204,7 +204,7 @@ if (isset($_GET['action'])) {
         echo '<p class="error">' . $error . '</p>';
     }
     ?>
-    <div class="caption"><? breadCrumbs($actpath) ?></div>
+    <div class="breadcrumbs"><? breadCrumbs($actpath) ?></div>
 
     <div id="result">
         <table width="100%">
