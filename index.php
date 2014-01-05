@@ -196,7 +196,7 @@ if (isset($_GET['action'])) {
         <li><a href="<?= $_SERVER['PHP_SELF'] ?>"><?= $labels['home_page'] ?></a></li>
         <li><a href="#create_dir"><?= $labels['create_dir_page'] ?></a></li>
         <li><a href="#upload"><?= $labels['upload_page'] ?></a></li>
-        <li><a href="javascript:;"><?= $labels['other_page'] ?></a></li>
+        <li><a href="#other"><?= $labels['other_page'] ?></a></li>
     </ul>
 
     <?php
@@ -242,6 +242,18 @@ if (isset($_GET['action'])) {
     </form>
 </div>
 
+<div class="modal" id="other">
+    <form class="modal-content" method="post"
+          action="<?= $_SERVER['PHP_SELF'] . '?action=uf&path=' . $actpath ?>"
+          enctype="multipart/form-data">
+        <a href="#" class="close">×</a>
+        <h2><?= $labels['other_page'] ?></h2>
+        <p><?= $labels['for_a_future'] ?></p>
+    </form>
+</div>
+
+
+
 <script>
     // ask the User & delete the File
     function del(path) {
@@ -255,4 +267,6 @@ if (isset($_GET['action'])) {
         alert(path)
     }
 </script>
+
 </body>
+</html>

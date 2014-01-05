@@ -25,4 +25,5 @@ $labels = [
         'other_page' => 'Some others...',
         'root_dir' => 'Root',
 	'upload' => 'Upload',
+	'for_a_future' => 'Some procurement for a future',
 ];
