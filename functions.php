@@ -1,6 +1,37 @@
 <?php
 // FileManage Functions
 
+// Show File Row
+function showFile($row=[])
+{
+    global $basepath, $labels, $hiddenFiles, $badExtensions;
+
+    if ($row['is_file']) {
+        $i = pathinfo($filepath);
+        if (!in_array($i['extension'], $badExtensions)) {
+            echo '<tr align="right">'
+                // Mime-Icon and Filename with Link
+                . '<td align="left"><i class="ico ' . $row['icon'] . '"></i> <a target="_blank" href="' . $row['url'] . '">' . $row['file'] . '</a></td>'
+                // show creation-Date
+                . '<td>' . $row['date'] . '</td>'
+                // show Filesize
+                . '<td>' . $row['size'] . '</td>'
+                // create a Button to delete the File
+                . '<td><i class="ico delete" title="' . $labels['delete_file'] . '" onclick="del(\'' . $row['file'] . '\')"></td>'
+                // create a Button to transfer Filepaths (e.g. to a parent Window)
+                . '<td><i class="ico ok" title="' . $labels['get_filepath'] . '" onclick="get(\'' . $row['relpath'] . '\')"></td>'
+                . "</tr>\n";
+        }
+    } else {
+        echo '<tr><td><i class="ico ' . $row['icon'] . '"></i> <a href="' . $row['url'] . '">' . $row['file'] . '</a></td>'
+           . '<td>&nbsp;</td>'
+           . '<td>&nbsp;</td>'
+           . '<td>&nbsp;</td>'
+           . '<td>&nbsp;</td>'
+           . "</tr>\n";
+    }
+}
+
 // Show File List
 function showList($path)
 {
@@ -62,30 +93,7 @@ function showList($path)
         $files = array_merge($dirs, $files);
 
         foreach($files as $row) {
-            if ($row['is_file']) {
-                $i = pathinfo($filepath);
-                if (!in_array($i['extension'], $badExtensions)) {
-                    echo '<tr align="right">'
-                        // Mime-Icon and Filename with Link
-                        . '<td align="left"><i class="ico ' . $row['icon'] . '"></i> <a target="_blank" href="' . $row['url'] . '">' . $row['file'] . '</a></td>'
-                        // show creation-Date
-                        . '<td>' . $row['date'] . '</td>'
-                        // show Filesize
-                        . '<td>' . $row['size'] . '</td>'
-                        // create a Button to delete the File
-                        . '<td><i class="ico delete" title="' . $labels['delete_file'] . '" onclick="del(\'' . $row['file'] . '\')"></td>'
-                        // create a Button to transfer Filepaths (e.g. to a parent Window)
-                        . '<td><i class="ico ok" title="' . $labels['get_filepath'] . '" onclick="get(\'' . $row['relpath'] . '\')"></td>'
-                        . "</tr>\n";
-                }
-            } else {
-                echo '<tr><td><i class="ico ' . $row['icon'] . '"></i> <a href="' . $row['url'] . '">' . $row['file'] . '</a></td>'
-                   . '<td>&nbsp;</td>'
-                   . '<td>&nbsp;</td>'
-                   . '<td>&nbsp;</td>'
-                   . '<td>&nbsp;</td>'
-                   . "</tr>\n";
-            }
+            showFile($row);
         }
 
     }
