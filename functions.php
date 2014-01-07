@@ -62,6 +62,7 @@ function showList($path)
             if ($file != '.' && $file != '..' && !in_array(basename($file), $hiddenFiles)) {
 
                 $filepath = trim($fullpath . '/' . $file, '/');
+                $filepath = trim($fullpath . $file, '/');
                 $relpath = trim($path . '/' . $file, '/');
 
                 if (is_file($filepath)) {
